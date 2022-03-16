@@ -1,0 +1,71 @@
+{
+    "name": "letrams/laravel-helper",
+    "description": "A laravel facade to interact with Telegram Bots",
+    "keywords": [
+        "laravel",
+        "telegram",
+        "letrams"
+    ],
+    "homepage": "https://github.com/letrams/laravel-helper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mikhailo Topol",
+            "email": "misha.topol@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/contracts": "^8.37 || ^9.0",
+        "illuminate/http": "^8.37 || ^9.0",
+        "spatie/laravel-package-tools": "^1.9.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^v3.1",
+        "guzzlehttp/guzzle": "^7.4",
+        "nunomaduro/collision": "^5.10|^v6.1",
+        "orchestra/testbench": "^6.22|^v7.1",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-mock": "^1.0",
+        "phpunit/phpunit": "^9.4",
+        "spatie/laravel-ray": "^1.26",
+        "spatie/pest-plugin-snapshots": "^1.1",
+        "spatie/x-ray": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Letrams\\TelegramHelper\\": "src"
+        }
+    },
+    "scripts": {
+        "x-ray": "vendor/bin/x-ray .",
+        "lint": "vendor/bin/php-cs-fixer fix -v",
+        "test:lint": "vendor/bin/php-cs-fixer fix -v --dry-run",
+        "test:types": "vendor/bin/phpstan analyse --ansi",
+        "test:unit": "vendor/bin/pest --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ],
+        "update:snapshots": "vendor/bin/pest --colors=always -d --update-snapshots",
+        "coverage": "@test:unit --coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Letrams\\TelegramHelper\\TelegramServiceProvider"
+            ],
+            "aliases": {
+                "TelegramHelper": "Letrams\\TelegramHelper\\Facades\\Telegram"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
