@@ -22,7 +22,7 @@ trait InteractsWithTelegram
     public function getApiUrl(): string
     {
         return (string)Str::of($this->telegram_api_base_url)
-            ->append(config('telegram.TOKEN'))
+            ->append($this->telegram_api_token)
             ->append('/', $this->endpoint);
     }
 
@@ -35,5 +35,12 @@ trait InteractsWithTelegram
             'url' => $this->getApiUrl(),
             'payload' => $this->data,
         ];
+    }
+
+    public function params($array): Telegram
+    {
+        $this->data = array_merge_recursive($this->data,$array);
+
+        return $this;
     }
 }

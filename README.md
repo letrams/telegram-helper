@@ -3,9 +3,13 @@
 ```php
 use Letrams\TelegramHelper\Facades\Telegram;
 
-Telegram::chat('169473819')
+Telegram::chat(USER_ID)
     ->html('test')
     ->send()
+```
+
+```php
+->setBot(TELEGRAM_TOKEN) //Задать бота в класе
 ```
 
 Пример, как вместо отправки запроса получить массив
@@ -19,7 +23,6 @@ Telegram::chat('169473819')->html('test')->toArray();
 Пример с клавиатурой
 
 ```php
-
 Telegram::message('hello')
     ->keyboard(Keyboard::make()->buttons([
             Button::make('Delete')->action('update')->param('id', '13'),
@@ -32,9 +35,19 @@ Telegram::message('hello')
 ```php
 ->html('test') //вид сообщение - html
 ->markdown('test') // вид сообщение - markdown
+
 ->send() // отправить в ТГ
 ->keyboard() // создание inline клавиатуры
 ->toArray() // вместо отправки в тг вернуть массив
+->params(["reply_markup" => ['keyboard' => [['q']]]]) // внедрение дополнительных параметров в запросов
+
+->reply() // Ответить на сообщение
+->protected() // Запретить пересылку
+->silent() // Отправить без звука
+->withoutPreview() // без превью
+
+->deleteMessage() // Удалить сообщение
+->edit() // Редактировать
 ```
 
 ## Installation

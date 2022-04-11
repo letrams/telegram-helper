@@ -33,6 +33,7 @@ class Telegram
     /** @var array<string, mixed> */
     protected array $data = [];
     protected string $telegram_api_base_url;
+    protected $telegram_api_token;
 
     public function __construct()
     {

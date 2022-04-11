@@ -15,6 +15,13 @@ trait ComposesMessages
         return $this;
     }
 
+    public function setBot($bot_token): Telegram
+    {
+        $this->telegram_api_token = $bot_token;
+
+        return $this;
+    }
+
     public function html(string $message): Telegram
     {
         $this->endpoint ??= self::ENDPOINT_MESSAGE;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DefStudio\Telegraph\Proxies;
+namespace Letrams\TelegramHelper\Proxies;
 
 use Letrams\TelegramHelper\Keyboard\Button;
 use Letrams\TelegramHelper\Keyboard\Keyboard;

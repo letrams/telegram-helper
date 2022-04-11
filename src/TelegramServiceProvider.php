@@ -17,7 +17,6 @@ class TelegramServiceProvider extends PackageServiceProvider
             ->hasConfigFile('telegram')
             ->hasCommand(SetTelegramWebhookCommand::class);
 
-
         $this->app->bind('telegram', Telegram::class);
     }
 }
